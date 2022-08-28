@@ -25,6 +25,7 @@ import {
 
 } from './styles';
 import '../../styles/swiper.css'
+import api from '../../services/api';
 
 const ProductList = [
   { img: Headset, name: 'Fone de ouvido', id: 1 },
@@ -37,7 +38,17 @@ const ProductList = [
   { img: Projectors, name: 'Projetores', id: 8 },
 ]
 
-export const SearchProducts: React.FC = () => {
+export type TCATEGORY = {
+  id: string;
+  name: string;
+  photo: string;
+}
+
+type TSearchProductsPROPS = {
+  categories: TCATEGORY[]
+}
+
+export const SearchProducts: React.FC<TSearchProductsPROPS> = ({categories}) => {
 
   return (
     <StyledContainer>
@@ -51,11 +62,11 @@ export const SearchProducts: React.FC = () => {
             pagination={{ clickable: true }}
             className="mySwiper"
           >
-            {ProductList.map((item) => (
+            {categories.map((item: TCATEGORY) => (
               <SwiperSlide key={item.id}>
                 <StyledSearchProductsBox>
                   <StyledSearchProduct>
-                    <StyledImg src={item.img} />
+                  <StyledImg src={`http://161.35.55.143:3333/files/${item.photo}`} />
                   </StyledSearchProduct>
                   <StyledSearchProductName>{item.name}</StyledSearchProductName>
                 </StyledSearchProductsBox>

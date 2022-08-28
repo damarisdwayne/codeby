@@ -16,10 +16,11 @@ interface ProdutcProps {
   description: string
   classification: number
   oldPrice: number
-  price: number
+  price: number,
+  photo: string,
 }
 
-export const Product = ({description, classification, oldPrice, price}: ProdutcProps) => {
+export const Product = ({description, classification, oldPrice, price,photo}: ProdutcProps) => {
   return (
     <StyledProductWrapper>
       <StyledProductImage>
