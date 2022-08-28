@@ -1,0 +1,8 @@
+export { FeaturedProducts } from './FeaturedProducts'
+export { FooterMobile } from './FooterMobile'
+export { Header } from './Header'
+export { KnowProducts } from './KnowProducts'
+export { Product } from './Product'
+export { SearchProducts } from './SearchProducts'
+export { NewsLetter } from './NewsLetter'
+export { Footer } from './Footer'
