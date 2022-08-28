@@ -3,16 +3,35 @@ import { Product } from '../Product';
 
 import { StyledNewsProductWrapper, StyledNewsProductsTitle } from './styles';
 
-const NewsProduct: React.FC = () => {
+export type TPRODUCT = {
+  id: string;
+  name: string;
+  photo: string;
+  price: number;
+  newPrice?: number;
+  discount?: number;
+  rating?: number;
+  color?: string;
+}
+
+type TFeaturedProductsPROPS = {
+  productsNews: TPRODUCT[]
+}
+
+const NewsProduct: React.FC<TFeaturedProductsPROPS> = ({productsNews}) => {
   return (
     <StyledNewsProductWrapper>
       <StyledNewsProductsTitle>Novidades</StyledNewsProductsTitle>
-      <Product
-        description='Notebook VAIO® FE15 Intel® Core™ i7 + Headphone G300'
-        classification={5}
-        oldPrice={600}
-        price={500}
-      />
+      {productsNews.map((item: TPRODUCT) => (
+          <Product
+            key={item.id}
+            description={item.name}
+            classification={item.rating || 0}
+            oldPrice={item.price}
+            price={item.newPrice || item.price}
+            photo={item.photo}
+          />
+        ))}
     </StyledNewsProductWrapper>
   )
 }
